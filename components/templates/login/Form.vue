@@ -1,5 +1,5 @@
 <template>
-  <a-form layout="vertical" :form="form">
+  <a-form layout="vertical" :form="form" @submit="handleSubmit">
     <a-form-item
       label="Username"
       :validate-status="userNameError() ? 'error' : ''"
@@ -33,6 +33,7 @@
     </a-form-item>
     <a-form-item>
       <a-button type="primary" html-type="submit" :disabled="hasErrors"> Log in </a-button>
+      <NuxtLink class="mar-l-2" to="/register">Register</NuxtLink>
     </a-form-item>
   </a-form>
 </template>
@@ -46,7 +47,7 @@ interface Data {
 }
 
 export default Vue.extend({
-  data() {
+  data(): Data {
     return {
       form: this.$form.createForm(this, { name: 'vertical_login' })
     }
@@ -66,11 +67,21 @@ export default Vue.extend({
   methods: {
     // Only show error after a field is touched.
     userNameError(): boolean {
-      return false
+      const { getFieldError, isFieldTouched } = this.form
+      return isFieldTouched('userName') && getFieldError('userName')
     },
     // Only show error after a field is touched.
     passwordError(): boolean {
-      return false
+      const { getFieldError, isFieldTouched } = this.form
+      return isFieldTouched('password') && getFieldError('password')
+    },
+    handleSubmit(e: any) {
+      e.preventDefault()
+      this.form.validateFields((err, values) => {
+        if (!err) {
+          console.log('Received values of form: ', values)
+        }
+      })
     }
   }
 })

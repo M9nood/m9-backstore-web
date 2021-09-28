@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <a-layout>
-      <a-layout-header>Header</a-layout-header>
+      <a-layout-header class="nav-header">
+        <NuxtLink class="mar-l-2" to="/">Retita</NuxtLink>
+      </a-layout-header>
       <a-layout-content>
         <div class="content-container">
           <Nuxt />
         </div>
       </a-layout-content>
-      <a-layout-footer>Footer</a-layout-footer>
+      <a-layout-footer></a-layout-footer>
     </a-layout>
   </div>
 </template>
@@ -22,5 +24,8 @@
   max-width: 948px;
   margin: auto;
   padding: $padding-xl 0;
+}
+.nav-header {
+  color: $color-white;
 }
 </style>
