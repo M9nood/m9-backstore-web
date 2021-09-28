@@ -1,0 +1,39 @@
+@mixin responsive($media) {
+    @if $media==mobile {
+      @media only screen and (max-width: $breakpoint-mobile - 1) {
+        @content;
+      }
+    }
+  
+    @else if $media==phablet {
+      @media only screen and (min-width: $breakpoint-mobile) and (max-width: $breakpoint-phablet - 1) {
+        @content;
+      }
+    }
+  
+    @else if $media==tablet {
+      @media only screen and (min-width: $breakpoint-phablet) and (max-width: $breakpoint-tablet - 1) {
+        @content;
+      }
+    }
+  
+    @else if $media==desktop-s {
+      @media only screen and (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop-s - 1) {
+        @content;
+      }
+    }
+  
+    @else if $media==desktop-l {
+      @media only screen and (min-width: $breakpoint-desktop-s) {
+        @content;
+      }
+    }
+  }
+  
+  @mixin multipleResponsive($medias...) {
+    @each $media in $medias {
+      @include responsive($media) {
+        @content;
+      }
+    }
+  }

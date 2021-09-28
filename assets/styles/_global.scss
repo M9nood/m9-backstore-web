@@ -1,0 +1,54 @@
+@for $i from 1 through 9 {
+    .radius-top-left-#{$i} {
+        border-top-left-radius: #{$i * $scale}px;
+    }
+    .radius-top-right-#{$i} {
+        border-top-right-radius: #{$i * $scale}px;
+    }
+    ::v-deep .pad-a-#{$i} {
+        padding: #{$i * $scale}px;
+    }
+    ::v-deep .pad-x-#{$i} {
+        padding-left: #{$i * $scale}px;
+        padding-right: #{$i * $scale}px;
+    }
+    ::v-deep .pad-y-#{$i} {
+        padding-top: #{$i * $scale}px;
+        padding-bottom: #{$i * $scale}px;
+    }
+    ::v-deep .pad-t-#{$i} {
+        padding-top: #{$i * $scale}px;
+    }
+    ::v-deep .pad-l-#{$i} {
+        padding-left: #{$i * $scale}px;
+    }
+    ::v-deep .pad-b-#{$i} {
+        padding-bottom: #{$i * $scale}px;
+    }
+    ::v-deep .pad-r-#{$i} {
+        padding-right: #{$i * $scale}px;
+    }
+    ::v-deep .mar-a-#{$i} {
+        margin: #{$i * $scale}px;
+    }
+    ::v-deep .mar-x-#{$i} {
+        margin-left: #{$i * $scale}px;
+        margin-right: #{$i * $scale}px;
+    }
+    ::v-deep .mar-y-#{$i} {
+        margin-top: #{$i * $scale}px;
+        margin-bottom: #{$i * $scale}px;
+    }
+    ::v-deep .mar-t-#{$i} {
+        margin-top: #{$i * $scale}px;
+    }
+    ::v-deep .mar-l-#{$i} {
+        margin-left: #{$i * $scale}px;
+    }
+    ::v-deep .mar-b-#{$i} {
+        margin-bottom: #{$i * $scale}px;
+    }
+    ::v-deep .mar-r-#{$i} {
+        margin-right: #{$i * $scale}px;
+    }
+}
