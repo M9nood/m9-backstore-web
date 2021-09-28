@@ -1,15 +1,15 @@
 <template>
   <div id="t-register--form">
     <h3>Register</h3>
-    <a-form-model ref="registerForm" :model="form" :rules="rules">
+    <a-form-model ref="registerForm" :model="formData" :rules="rules">
       <a-form-model-item has-feedback label="Username" prop="username">
-        <a-input v-model="form.username" autocomplete="off" />
+        <a-input v-model="formData.username" autocomplete="off" />
       </a-form-model-item>
       <a-form-model-item has-feedback label="Password" prop="password">
-        <a-input v-model="form.password" type="password" autocomplete="off" />
+        <a-input v-model="formData.password" type="password" autocomplete="off" />
       </a-form-model-item>
       <a-form-model-item has-feedback label="Confirm" prop="confirmPassword">
-        <a-input v-model="form.confirmPassword" type="password" autocomplete="off" />
+        <a-input v-model="formData.confirmPassword" type="password" autocomplete="off" />
       </a-form-model-item>
       <a-form-model-item :wrapper-col="{ span: 14, offset: 4 }">
         <a-button type="primary" @click="submitForm('registerForm')"> Submit </a-button>
@@ -25,13 +25,15 @@ import { FormModel } from 'ant-design-vue'
 
 Vue.use(FormModel)
 
+interface formData {
+  username: String
+  password: String
+  confirmPassword: String
+  name: String
+}
+
 interface Data {
-  form: {
-    username: String
-    password: String
-    confirmPassword: String
-    name: String
-  }
+  formData: formData
   rules: Object
 }
 
@@ -41,7 +43,7 @@ export default Vue.extend({
       if (value === '') {
         callback(new Error('Please input the password'))
       } else {
-        if (this.form.confirmPassword !== '') {
+        if (this.formData.confirmPassword !== '') {
           this.$refs.registerForm.validateField('confirmPassword')
         }
         callback()
@@ -50,14 +52,14 @@ export default Vue.extend({
     const validatePass2 = (rule: any, value: any, callback: any) => {
       if (value === '') {
         callback(new Error('Please input the password again'))
-      } else if (value !== this.form.password) {
+      } else if (value !== this.formData.password) {
         callback(new Error("Two inputs don't match!"))
       } else {
         callback()
       }
     }
     return {
-      form: {
+      formData: {
         username: '',
         password: '',
         confirmPassword: '',
@@ -72,7 +74,7 @@ export default Vue.extend({
   },
   methods: {
     submitForm(formName: string) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate((valid: boolean) => {
         if (valid) {
           console.log(valid, 'valid')
         } else {
