@@ -1,5 +1,5 @@
 <template>
-  <a-form layout="vertical" :form="form" @submit="handleSubmit">
+  <a-form layout="vertical" :form="form">
     <a-form-item
       label="Username"
       :validate-status="userNameError() ? 'error' : ''"
@@ -38,14 +38,15 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
 import { WrappedFormUtils } from 'ant-design-vue/types/form/form'
 
 interface Data {
   form: WrappedFormUtils
 }
 
-export default {
-  data(): Data {
+export default Vue.extend({
+  data() {
     return {
       form: this.$form.createForm(this, { name: 'vertical_login' })
     }
@@ -64,23 +65,13 @@ export default {
   },
   methods: {
     // Only show error after a field is touched.
-    userNameError() {
-      const { getFieldError, isFieldTouched } = this.form
-      return isFieldTouched('userName') && getFieldError('userName')
+    userNameError(): boolean {
+      return false
     },
     // Only show error after a field is touched.
-    passwordError() {
-      const { getFieldError, isFieldTouched } = this.form
-      return isFieldTouched('password') && getFieldError('password')
-    },
-    handleSubmit(e: any) {
-      e.preventDefault()
-      this.form.validateFields((err, values) => {
-        if (!err) {
-          console.log('Received values of form: ', values)
-        }
-      })
+    passwordError(): boolean {
+      return false
     }
   }
-}
+})
 </script>
