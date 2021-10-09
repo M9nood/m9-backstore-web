@@ -1,12 +1,10 @@
-import { Plugin } from '@nuxt/types'
-
-const nuxtAxios: Plugin = ({ $axios, redirect }) => {
+const nuxtAxios = ({ $axios, redirect }) => {
   $axios.setHeader('Content-Type', 'application/json')
   $axios.setHeader('Cache-Control', 'no-cache')
 
-  $axios.onRequest((config: any) => {})
+  $axios.onRequest((config) => {})
 
-  $axios.onError((error: any) => {
+  $axios.onError((error) => {
     const code = parseInt(error.response && error.response.status)
     if (code === 400) {
       redirect('/400')

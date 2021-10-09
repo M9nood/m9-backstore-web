@@ -6,17 +6,17 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 
-export default Vue.extend({
+export default {
   props: {
     user: {
       type: Object,
       default: () => {}
     }
   }
-})
+}
 </script>
 
 <style lang="scss" scoped>

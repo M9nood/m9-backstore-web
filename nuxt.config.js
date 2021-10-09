@@ -53,17 +53,41 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/style-resources', '@nuxtjs/axios'],
+  modules: ['@nuxtjs/style-resources', '@nuxtjs/axios', '@nuxtjs/auth', '@nuxtjs/proxy'],
   styleResources: {
     scss: ['@/assets/styles/main.scss']
   },
   axios: {
-    proxy: true
+    proxy: true,
+    credentials: true
   },
   proxy: {},
   port: process.env.PORT || 3000,
   host: process.env.HOST || '0.0.0.0',
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/api/v1/auth/login',
+            method: 'POST',
+            propertyName: 'data.token.access_token'
+          },
+          user: { url: '/api/users/profile', method: 'get', propertyName: 'data' },
+          logout: false
+        },
+        redirectUri: `/me`
+      }
+    },
+    redirect: {
+      login: '/login',
+      home: '/me'
+    }
+  },
+  router: {
+    middleware: ['auth']
+  }
 }
