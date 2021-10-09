@@ -6,7 +6,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-export default Vue.extend({
+export default {
   props: {
     image: {
       type: String,
@@ -14,7 +14,7 @@ export default Vue.extend({
         'http://1.bp.blogspot.com/_Ym3du2sG3R4/S_-M_kTV9OI/AAAAAAAACZA/SNCea2qKOWQ/s1600/mac+os+x+wallpaper.jpg'
     }
   }
-})
+}
 </script>
 <style lang="scss" scoped>
 .cover {

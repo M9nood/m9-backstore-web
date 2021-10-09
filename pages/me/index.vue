@@ -2,21 +2,18 @@
   <LazyTemProfileInfo :user="user" />
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
 import { mapActions } from 'vuex'
 
-interface Data {
-  user: Object
-}
-export default Vue.extend({
+export default {
+  middleware: 'auth',
   async asyncData({ store }) {
-    const user = await store.dispatch('user/getUserProfile')
-    return {
-      user
-    }
+    // const user = await store.dispatch('user/getUserProfile')
+    // return {
+    //   user
+    // }
   },
-  data(): Data {
+  data() {
     return {
       user: {}
     }
@@ -24,5 +21,5 @@ export default Vue.extend({
   methods: {
     ...mapActions({})
   }
-})
+}
 </script>
