@@ -7,16 +7,14 @@ import { mapActions } from 'vuex'
 
 export default {
   middleware: 'auth',
-  async asyncData({ store }) {
-    // const user = await store.dispatch('user/getUserProfile')
-    // return {
-    //   user
-    // }
-  },
+  async asyncData({ store }) {},
   data() {
     return {
       user: {}
     }
+  },
+  mounted() {
+    console.log('user', this.$auth.$storage.getCookie('user'))
   },
   methods: {
     ...mapActions({})

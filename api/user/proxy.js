@@ -10,7 +10,7 @@ export const UserProxy = (req, res) => {
       status: 200,
       data: {
         id: 1,
-        name: 'M9nood Eiei',
+        name: 'M9nood Eieisssz',
         email: 'spw@mail.com'
       }
     }

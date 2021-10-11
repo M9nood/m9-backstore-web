@@ -46,11 +46,7 @@ export default {
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
-    '@nuxtjs/style-resources'
-  ],
+  buildModules: ['@nuxtjs/style-resources'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/style-resources', '@nuxtjs/axios', '@nuxtjs/auth', '@nuxtjs/proxy'],
@@ -76,10 +72,11 @@ export default {
             method: 'POST',
             propertyName: 'data.token.access_token'
           },
-          user: { url: '/api/users/profile', method: 'get', propertyName: 'data' },
+          user: false,
           logout: false
         },
-        redirectUri: `/me`
+        redirectUri: `/me`,
+        autoFetchUser: false
       }
     },
     redirect: {
