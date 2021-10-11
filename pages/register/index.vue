@@ -8,20 +8,18 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
 import { mapActions } from 'vuex'
 
-interface Data {}
-export default Vue.extend({
+export default {
   async asyncData({ store }) {},
-  data(): Data {
+  data() {
     return {}
   },
   methods: {
     ...mapActions({})
   }
-})
+}
 </script>
 
 <style lang="scss" scoped></style>

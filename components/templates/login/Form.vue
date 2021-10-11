@@ -24,12 +24,15 @@ export default {
         password: passHash
       }
       try {
-        await this.$auth.loginWith('local', {
+        const {
+          data: { data }
+        } = await this.$auth.loginWith('local', {
           data: payload
         })
+        this.$auth.$storage.setUniversal('user', data)
+        this.$auth.setUser(data)
         this.$router.push('/me')
       } catch (err) {
-        console.log('err', err.response)
         this.$router.push('/login')
       }
     }

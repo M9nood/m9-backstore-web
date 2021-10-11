@@ -3,6 +3,7 @@
     <a-layout>
       <a-layout-header class="nav-header">
         <NuxtLink class="mar-l-2" to="/">Retita</NuxtLink>
+        <a-button v-if="$auth.loggedIn" type="primary" @click="logout"> Logout </a-button>
       </a-layout-header>
       <a-layout-content>
         <div class="content-container">
@@ -13,6 +14,20 @@
     </a-layout>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {}
+  },
+  methods: {
+    async logout() {
+      await this.$auth.logout()
+      this.$router.push('/login')
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 #app {

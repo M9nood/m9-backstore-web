@@ -4,13 +4,7 @@ module.exports = {
     browser: true,
     node: true
   },
-  extends: [
-    '@nuxtjs/eslint-config-typescript',
-    'prettier',
-    'prettier/vue',
-    'plugin:prettier/recommended',
-    'plugin:nuxt/recommended'
-  ],
+  extends: ['prettier', 'prettier/vue', 'plugin:prettier/recommended', 'plugin:nuxt/recommended'],
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
@@ -38,11 +32,8 @@ module.exports = {
     camelcase: 'off',
     // for typescript
     'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': 'error',
     'no-shadow': 'off',
-    '@typescript-eslint/no-shadow': 'error',
     // for more pretty
-    'import/newline-after-import': ['warn', { count: 1 }], // TODO: will be error level in the future
-    '@typescript-eslint/no-unused-vars': 'off'
+    'import/newline-after-import': 'off' // TODO: will be error level in the future
   }
 }

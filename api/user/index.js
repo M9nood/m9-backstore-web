@@ -1,10 +1,5 @@
 import { UserProxy } from './proxy'
 
-const routes = [
-  {
-    path: '/api/users/profile',
-    handler: UserProxy
-  }
-]
+const routes = []
 
 export default routes
