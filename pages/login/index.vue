@@ -12,6 +12,7 @@
 import { mapActions } from 'vuex'
 
 export default {
+  layout: 'login',
   asyncData({ store }) {},
   data() {
     return {}

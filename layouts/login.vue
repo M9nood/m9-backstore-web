@@ -2,21 +2,11 @@
   <div id="app">
     <a-layout>
       <a-layout-header class="nav-header">
-        <OrgHeaderNavBar />
+        <OrgHeaderNavMenu />
       </a-layout-header>
       <a-layout-content>
         <div class="content-container">
-          <a-breadcrumb style="margin: 16px 0">
-            <a-breadcrumb-item>Home</a-breadcrumb-item>
-            <a-breadcrumb-item>List</a-breadcrumb-item>
-            <a-breadcrumb-item>App</a-breadcrumb-item>
-          </a-breadcrumb>
-          <a-layout style="padding: 24px 0; background: #fff">
-            <OrgNavSider />
-            <a-layout-content :style="{ padding: '0 24px', minHeight: '280px' }">
-              <Nuxt />
-            </a-layout-content>
-          </a-layout>
+          <Nuxt />
         </div>
       </a-layout-content>
       <a-layout-footer></a-layout-footer>
@@ -39,8 +29,8 @@ export default {
   height: 100vh;
 }
 .content-container {
-  width: 100%;
-  max-width: 1024px;
+  width: auto;
+  max-width: 948px;
   margin: auto;
   padding: $padding-xl 0;
 }
