@@ -1,12 +1,33 @@
 <template>
-  <div>Product</div>
+  <div>
+    <LazyTemProductManager :data="datas" :total="totalRows" @fetch="fetchData" />
+  </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
+  data() {
+    return {
+      datas: [],
+      totalRows: 0,
+      queryInfo: {
+        page: 1,
+        pageSize: 10
+      }
+    }
+  },
   async mounted() {
-    let data = await this.$store.dispatch('product/fetchProducts')
-    console.log('data', data)
+    await this.fetchData()
+  },
+  methods: {
+    ...mapActions('product', ['fetchProducts']),
+    async fetchData(q = {}) {
+      this.queryInfo = { ...this.queryInfo, ...q }
+      let data = await this.fetchProducts(this.queryInfo)
+      this.datas = data.products
+      this.totalRows = data.totalRows
+    }
   }
 }
 </script>
